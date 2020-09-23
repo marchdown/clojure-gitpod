@@ -1,0 +1,4 @@
+(ns facade.db)
+
+(def default-db
+  {:name "re-frame"})
