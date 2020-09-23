@@ -51,8 +51,9 @@
 
 (defn display-re-pressed-example []
   (let [re-pressed-example (re-frame/subscribe [::subs/re-pressed-example])]
-    [:div
-
+    [:re-com/v -   [re-com/alert-box
+      :alert-type :warning
+      :body "I'm a re-com warning box"]
      [:p
       "Re-pressed is listening for keydown events. However, re-pressed
       won't trigger any events until you set some keydown rules."]
@@ -70,9 +71,13 @@
       [:span ". So go ahead, try it out!"]]
 
      (when-let [rpe @re-pressed-example]
-       [re-com/alert-box
-        :alert-type :info
-        :body rpe])]))
+       [:div
+        [re-com/alert-box
+         :heading
+         "cAchtung!"
+
+         :alert-type :warning
+         :body rpe]])]))
 
 (defn title []
   (let [name (re-frame/subscribe [::subs/name])]
